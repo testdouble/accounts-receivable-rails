@@ -8,10 +8,10 @@
 - [] Invoice test?
 - [] Standardrb
 
-## Priority Recap
+## Priority Recap 
 1. Remove dependencies on Capybara & Selenium (comment out test to start maybe?)
-1. Remove Brew doctor and other weird instructions in readme
-1. Upgrade rails to current version
+1. [x] Remove Brew doctor and other weird instructions in readme
+1. [x] Upgrade rails to current version
 1. Upgrade client_test and controller test to new recommendations
 1. Possibly before #3 might also be a PR/branch for this upgrade to Rspec
 1. Weird saving behavior in invoices view
