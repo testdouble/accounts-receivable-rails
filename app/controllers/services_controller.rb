@@ -24,7 +24,7 @@ class ServicesController < ApplicationController
     @service = Service.new(service_params)
 
     if @service.save
-      redirect_to @service, notice: 'Service was successfully created.'
+      redirect_to @service, notice: "Service was successfully created."
     else
       render :new
     end
@@ -33,7 +33,7 @@ class ServicesController < ApplicationController
   # PATCH/PUT /services/1
   def update
     if @service.update(service_params)
-      redirect_to @service, notice: 'Service was successfully updated.'
+      redirect_to @service, notice: "Service was successfully updated."
     else
       render :edit
     end
@@ -42,17 +42,18 @@ class ServicesController < ApplicationController
   # DELETE /services/1
   def destroy
     @service.destroy
-    redirect_to services_url, notice: 'Service was successfully destroyed.'
+    redirect_to services_url, notice: "Service was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_service
-      @service = Service.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def service_params
-      params.require(:service).permit(:name, :price_cents)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_service
+    @service = Service.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def service_params
+    params.require(:service).permit(:name, :price_cents)
+  end
 end

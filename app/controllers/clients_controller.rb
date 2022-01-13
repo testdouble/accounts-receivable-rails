@@ -24,7 +24,7 @@ class ClientsController < ApplicationController
     @client = Client.new(client_params)
 
     if @client.save
-      redirect_to @client, notice: 'Client was successfully created.'
+      redirect_to @client, notice: "Client was successfully created."
     else
       render :new
     end
@@ -33,7 +33,7 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1
   def update
     if @client.update(client_params)
-      redirect_to @client, notice: 'Client was successfully updated.'
+      redirect_to @client, notice: "Client was successfully updated."
     else
       render :edit
     end
@@ -42,17 +42,18 @@ class ClientsController < ApplicationController
   # DELETE /clients/1
   def destroy
     @client.destroy
-    redirect_to clients_url, notice: 'Client was successfully destroyed.'
+    redirect_to clients_url, notice: "Client was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_client
-      @client = Client.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def client_params
-      params.require(:client).permit(:name, :email)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_client
+    @client = Client.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def client_params
+    params.require(:client).permit(:name, :email)
+  end
 end

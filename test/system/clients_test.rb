@@ -6,8 +6,8 @@ class ClientsTest < ApplicationSystemTestCase
 
     # Create
     click_link "New Client"
-    fill_in "Name", :with => "Widgets, Inc."
-    fill_in "Email", :with => "owners@widgets.biz"
+    fill_in "Name", with: "Widgets, Inc."
+    fill_in "Email", with: "owners@widgets.biz"
 
     click_button "Create Client"
 
@@ -19,8 +19,8 @@ class ClientsTest < ApplicationSystemTestCase
 
     # Update
     find_client_row_named("Widgets, Inc.").find_link("Edit").click
-    fill_in "Name", :with => "Widgets LLP"
-    fill_in "Email", :with => "partners@widgets.biz"
+    fill_in "Name", with: "Widgets LLP"
+    fill_in "Email", with: "partners@widgets.biz"
 
     click_button "Update Client"
 

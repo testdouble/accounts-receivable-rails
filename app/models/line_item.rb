@@ -1,7 +1,7 @@
 class LineItem < ApplicationRecord
   belongs_to :invoice
-  belongs_to :product, :optional => true
-  belongs_to :service, :optional => true
+  belongs_to :product, optional: true
+  belongs_to :service, optional: true
 
   validate :must_be_product_or_service
 

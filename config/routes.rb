@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :products
   resources :clients
 
-  root :to => redirect('/invoices')
+  root to: redirect("/invoices")
 end
