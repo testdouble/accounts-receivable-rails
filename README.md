@@ -10,11 +10,8 @@ our products and services.
 
 Before you get started, be sure to:
 
-* Be running a supported version of Ruby (we'd recommend MRI version 2.3 or
-  higher)
-* That your system is ready to compile gems with native extensions (on a Mac
-  with homebrew, it may be worth running `brew doctor` to verify everything is
-  ready)
+* Be running Ruby 3.1.0
+* (We recommend using a Ruby version manager like asdf, rvm, etc. to help manage multple Ruby versions)
 * That you have a recent version of Bundler installed (e.g. `gem install
   bundler`)
 * That you have a recent version of git installed (e.g. `brew install git` on a
@@ -27,7 +24,8 @@ running with the following commands:
 
 ```
 $ bundle install
-$ bundle exec rake db:create db:migrate db:fixtures:load
+$ bin/rails db:setup
+$ bin/rails db:fixtures:load
 ```
 
 (Note that in addition to running migrations, we're also loading the app's

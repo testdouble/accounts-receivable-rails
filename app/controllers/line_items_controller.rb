@@ -24,7 +24,7 @@ class LineItemsController < ApplicationController
     @line_item = LineItem.new(line_item_params)
 
     if @line_item.save
-      redirect_to @line_item, notice: 'Line item was successfully created.'
+      redirect_to @line_item, notice: "Line item was successfully created."
     else
       render :new
     end
@@ -33,7 +33,7 @@ class LineItemsController < ApplicationController
   # PATCH/PUT /line_items/1
   def update
     if @line_item.update(line_item_params)
-      redirect_to @line_item, notice: 'Line item was successfully updated.'
+      redirect_to @line_item, notice: "Line item was successfully updated."
     else
       render :edit
     end
@@ -42,17 +42,18 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1
   def destroy
     @line_item.destroy
-    redirect_to line_items_url, notice: 'Line item was successfully destroyed.'
+    redirect_to line_items_url, notice: "Line item was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_line_item
-      @line_item = LineItem.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def line_item_params
-      params.require(:line_item).permit(:invoice_id, :product_id, :service_id, :price_override_cents, :quantity, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_line_item
+    @line_item = LineItem.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def line_item_params
+    params.require(:line_item).permit(:invoice_id, :product_id, :service_id, :price_override_cents, :quantity, :description)
+  end
 end
