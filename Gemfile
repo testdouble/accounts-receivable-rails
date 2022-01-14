@@ -9,6 +9,7 @@ gem "uglifier", ">= 1.3.0"
 gem "jsbundling-rails", "~> 1.0"
 gem "cssbundling-rails", "~> 1.0"
 gem "turbo-rails", "~> 1.0"
+gem "sprockets-rails", "~> 3.4"
 
 group :development, :test do
   gem "pry-rails"
@@ -22,3 +23,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+

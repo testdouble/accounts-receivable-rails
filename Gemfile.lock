@@ -248,6 +248,7 @@ DEPENDENCIES
   rails-controller-testing
   sass-rails (~> 6.0)
   selenium-webdriver
+  sprockets-rails (~> 3.4)
   sqlite3
   standardrb (~> 1.0)
   turbo-rails (~> 1.0)
