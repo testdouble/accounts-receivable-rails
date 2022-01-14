@@ -1,16 +1,17 @@
 require "test_helper"
 
-class InvoicesControllerTest < ActionController::TestCase
+class InvoicesControllerTest < ActionDispatch::IntegrationTest
   def test_index
-    get :index
+    get invoices_url
 
+    assert_response :success
     assert_equal Invoice.all, assigns(:invoices)
   end
 
   def test_show_assigns_a_client
     invoice = invoices(:build)
 
-    get :show, params: {id: invoice.id}
+    get invoice_url(invoice)
 
     assert_equal clients(:acme), assigns(:client)
   end
@@ -18,7 +19,7 @@ class InvoicesControllerTest < ActionController::TestCase
   def test_show_assigns_line_items
     invoice = invoices(:build)
 
-    get :show, params: {id: invoice.id}
+    get invoice_url(invoice)
 
     line_items = assigns(:line_items)
     assert_equal line_items[:product].count, 1
@@ -28,7 +29,7 @@ class InvoicesControllerTest < ActionController::TestCase
   def test_show_assigns_a_total
     invoice = invoices(:build)
 
-    get :show, params: {id: invoice.id}
+    get invoice_url(invoice)
 
     assert_equal 2_480_000, assigns(:total)
   end

@@ -34,7 +34,7 @@ fixtures into the development database to help move things along.)
 If nothing blew up, you should be able to start the Rails server:
 
 ```
-$ bundle exec rails server
+$ bin/dev
 ```
 
 And then you should be able to see pre-generated invoices in a browser:

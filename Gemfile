@@ -6,8 +6,9 @@ gem "sqlite3"
 gem "puma", "~> 5.0"
 gem "sass-rails", "~> 6.0"
 gem "uglifier", ">= 1.3.0"
-
-gem "turbolinks", "~> 5"
+gem "jsbundling-rails", "~> 1.0"
+gem "cssbundling-rails", "~> 1.0"
+gem "turbo-rails", "~> 1.0"
 
 group :development, :test do
   gem "pry-rails"

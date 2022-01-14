@@ -16,7 +16,7 @@
 1. Possibly before #3 might also be a PR/branch for this upgrade to Rspec
 1. Weird saving behavior in invoices view
 1. Tailwind-ify?  (could be fun if you haven't tried it, have a UI account if you want to play around with it
-1. Ruby-version something that works well with m1s w/out the need for any extra install
+1. [x] Ruby-version something that works well with m1s w/out the need for any extra install
 
 
 
