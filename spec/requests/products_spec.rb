@@ -28,7 +28,7 @@ RSpec.describe "Products", type: :request do
   describe "post /products" do
     let(:new_product) { build :product }
 
-    subject { post products_path, params: { product: {name: new_product.name, price_cents: new_product.price_cents }}}
+    subject { post products_path, params: {product: {name: new_product.name, price_cents: new_product.price_cents}} }
 
     it "creates a new product" do
       subject
@@ -40,7 +40,7 @@ RSpec.describe "Products", type: :request do
   end
 
   describe "put /product/:id" do
-    subject { put product_path(first_product), params: { product: {price_cents: 100 }}}
+    subject { put product_path(first_product), params: {product: {price_cents: 100}} }
 
     it "updates the product" do
       subject

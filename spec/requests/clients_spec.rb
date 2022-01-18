@@ -28,7 +28,7 @@ RSpec.describe "Clients", type: :request do
   describe "post /clients" do
     let(:new_client) { build :client }
 
-    subject { post clients_path, params: { client: {name: new_client.name, email: new_client.email }}}
+    subject { post clients_path, params: {client: {name: new_client.name, email: new_client.email}} }
 
     it "creates a new client" do
       subject
@@ -42,7 +42,7 @@ RSpec.describe "Clients", type: :request do
   describe "put /clients/:id" do
     let(:new_client) { build :client }
 
-    subject { put client_path(first_client), params: { client: {name: new_client.name, email: new_client.email }}}
+    subject { put client_path(first_client), params: {client: {name: new_client.name, email: new_client.email}} }
 
     it "updates the client" do
       subject
