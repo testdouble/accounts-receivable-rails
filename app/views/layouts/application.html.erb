@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full bg-gray-100">
   <head>
     <title>AccountsReceivable</title>
     <%= csrf_meta_tags %>
 
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
-  <body>
-    <div class="container text-blue-700">
-      <nav>
-        <ul>
-          <li><%= link_to "Clients", clients_path %></li>
-          <li><%= link_to "Products", products_path %></li>
-          <li><%= link_to "Services", services_path %></li>
-          <li><%= link_to "Invoices", invoices_path %></li>
-          <li><%= link_to "Line Items", line_items_path %></li>
-        </ul>
-      </nav>
-      <div class="main">
-        <%= yield %>
-      </div>
-    </div>
+  <body class="h-full">
+		<!-- TailwindUI sidebar layout -->
+		<!-- https://tailwindui.com/components/application-ui/application-shells/sidebar -->
+
+		<div>
+			<%= render "layouts/sidebar" %>
+
+			<div class="md:pl-64 flex flex-col">
+				<%= render "layouts/top_bar" %>
+
+				<main class="flex-1">
+					<div class="p-6">
+						<%= yield %>
+					</div>
+				</main>
+			</div>
+		</div>
   </body>
 </html>

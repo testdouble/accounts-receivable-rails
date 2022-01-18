@@ -1,29 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Clients</h1>
+<h1 class="text-2xl mb-2">Clients</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @clients.each do |client| %>
+<div class="table-container">
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead class="bg-gray-200">
       <tr>
-        <td><%= client.name %></td>
-        <td><%= client.email %></td>
-        <td><%= link_to 'Show', client %></td>
-        <td><%= link_to 'Edit', edit_client_path(client) %></td>
-        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+        <th colspan="3" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @clients.each_with_index do |client, index| %>
+        <%= tag.tr class: index.odd? ? "bg-white" : "bg-gray-50" do %>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= client.name %></td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= client.email %></td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= link_to 'Show', client %></td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= link_to 'Edit', edit_client_path(client) %></td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 
-<%= link_to 'New Client', new_client_path %>
+<%= link_to 'New Client', new_client_path, role: "button", class: "btn" %>
