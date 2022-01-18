@@ -29,7 +29,7 @@ RSpec.describe LineItem, type: :model do
       let(:product) { create :product }
       let(:line_item_kwargs) {{ product: product }}
 
-      fit "is valid to have a product line_item" do
+      it "is valid to have a product line_item" do
         expect(subject.product).to eq(product)
       end
     end
@@ -38,7 +38,7 @@ RSpec.describe LineItem, type: :model do
       let(:service) { create :service }
       let(:line_item_kwargs) {{ service: service }}
 
-      fit "is valid to have a service line_item" do
+      it "is valid to have a service line_item" do
         expect(subject.service).to eq(service)
       end
     end

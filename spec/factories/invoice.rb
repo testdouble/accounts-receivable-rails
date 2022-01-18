@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :invoice do
-    client { Faker::Name.name }
+    client
     net_days { 30 }
     note { Faker::Config.random }
   end
