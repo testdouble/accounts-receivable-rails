@@ -18,13 +18,13 @@ RSpec.describe "Invoices", type: :request do
 
   describe "get /invoices/:id" do
     let!(:service) { create :service }
-    let!(:line_item) { create :line_item, invoice: first_invoice, service: service }
+    let!(:line_item) { create :line_item, invoice: first_invoice, service: }
 
     subject { get invoice_path(first_invoice) }
 
     it "renders show" do
       subject
-      
+
       expect(response).to render_template(:show)
       expect(response.body).to include(first_invoice.client.name)
       expect(response.body).to include(first_invoice.line_items.first.service.name)
@@ -43,7 +43,7 @@ RSpec.describe "Invoices", type: :request do
   describe "post /invoices" do
     let!(:client) { create :client }
 
-    subject { post invoices_path, params: { invoice: {client_id: client.id }}}
+    subject { post invoices_path, params: {invoice: {client_id: client.id}} }
 
     it "creates a new invoice" do
       subject
@@ -57,7 +57,7 @@ RSpec.describe "Invoices", type: :request do
   describe "put /invoices/:id" do
     let!(:client) { create :client }
 
-    subject { put invoice_path(first_invoice), params: { invoice: {client_id: client.id }}}
+    subject { put invoice_path(first_invoice), params: {invoice: {client_id: client.id}} }
 
     it "updates the invoice" do
       subject

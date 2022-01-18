@@ -28,7 +28,7 @@ RSpec.describe "Services", type: :request do
   describe "post /services" do
     let(:new_service) { build :service }
 
-    subject { post services_path, params: { service: {name: new_service.name, price_cents: new_service.price_cents }}}
+    subject { post services_path, params: {service: {name: new_service.name, price_cents: new_service.price_cents}} }
 
     it "creates a new service" do
       subject
@@ -40,7 +40,7 @@ RSpec.describe "Services", type: :request do
   end
 
   describe "put /service/:id" do
-    subject { put service_path(first_service), params: { service: {price_cents: 100 }}}
+    subject { put service_path(first_service), params: {service: {price_cents: 100}} }
 
     it "updates the service" do
       subject

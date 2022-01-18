@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Line Items", type: :request do
   let!(:service) { create :service }
-  let!(:line_item) { create :line_item, invoice: invoice, service: service }
+  let!(:line_item) { create :line_item, invoice:, service: }
   let!(:invoice) { create :invoice }
 
   describe "get /line_items" do
@@ -28,7 +28,7 @@ RSpec.describe "Line Items", type: :request do
   describe "post /line_items" do
     let!(:product) { create :product }
 
-    subject { post line_items_path, params: { line_item: {invoice_id: invoice.id, product_id: product.id, quantity: 1 }}}
+    subject { post line_items_path, params: {line_item: {invoice_id: invoice.id, product_id: product.id, quantity: 1}} }
 
     it "creates a new line item" do
       subject
@@ -42,7 +42,7 @@ RSpec.describe "Line Items", type: :request do
   describe "put /line_item/:id" do
     let!(:new_service) { create :service }
 
-    subject { put line_item_path(line_item), params: { line_item: {service_id: new_service.id }}}
+    subject { put line_item_path(line_item), params: {line_item: {service_id: new_service.id}} }
 
     it "updates the line item" do
       subject
