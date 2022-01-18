@@ -15,54 +15,56 @@ body, ul, li {
 
 nav {
   width: 7rem;
+
+  ul {
+    margin: 3rem 1rem 0 .4rem;
+    list-style-type: none;
+  }
+
+  li {
+    margin-top: 1rem;
+    padding: .4rem;
+    background-color: black;
+    text-align: center;
+
+    &:hover {
+      background-color: gray;
+    }
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
 }
 
-nav ul {
-  margin: 3rem 1rem 0 .4rem;
-  list-style-type: none;
-}
 
-nav li {
-  margin-top: 1rem;
-  padding: .4rem;
-  background-color: black;
-  text-align: center;
-}
+.main {
+  table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: .8rem;
 
-nav li:hover {
-  background-color: gray;
-}
+    td,th {
+      padding: .1rem;
+    }
 
-nav a {
-  color: white;
-  text-decoration: none;
-}
+    td {
+      border: 1px dotted gray;
+    }
+  }
 
+  a, button {
+    display: inline-block;
+    padding: .4rem;
+    font-size: 1rem;
+    background-color: black;
+    border: 0;
+    color: white;
+    text-decoration: none;
+  }
 
-.main table {
-  table-layout: fixed;
-  border-collapse: collapse;
-  font-size: .8rem;
-}
-
-.main table td,th {
-  padding: .1rem;
-}
-
-.main table td {
-  border: 1px dotted gray;
-}
-
-.main a, button, input[type=submit] {
-  display: inline-block;
-  padding: .4rem;
-  font-size: 1rem;
-  background-color: black;
-  border: 0;
-  color: white;
-  text-decoration: none;
-}
-
-.main a, button, input[type=submit]:hover {
-  background-color: gray;
+  a, button {
+    background-color: gray;
+  }
 }
