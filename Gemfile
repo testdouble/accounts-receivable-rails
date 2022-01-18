@@ -15,8 +15,8 @@ group :development, :test do
 
   gem "rails-controller-testing"
 
-  gem "capybara", "~> 3.26"
-  gem "selenium-webdriver"
+  # gem "capybara", "~> 3.26"
+  # gem "selenium-webdriver"
   gem "standardrb", "~> 1.0"
 
   gem "rspec-rails", "~> 5.0.2"
