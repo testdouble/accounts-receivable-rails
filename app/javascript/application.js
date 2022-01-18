@@ -2,6 +2,5 @@
 import "@hotwired/turbo-rails"
 
 document.addEventListener("turbo:load", () => {
-  // Your code here
-  console.log("Hello Worldxxx")
+  console.log("Javascript working!")
 })
