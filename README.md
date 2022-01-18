@@ -25,11 +25,10 @@ running with the following commands:
 ```
 $ bundle install
 $ bin/rails db:setup
-$ bin/rails db:fixtures:load
 ```
 
 (Note that in addition to running migrations, we're also loading the app's
-fixtures into the development database to help move things along.)
+seed data into the development database to help move things along.)
 
 If nothing blew up, you should be able to start the Rails server:
 
