@@ -20,11 +20,10 @@ Before you get started, be sure to:
 ### Initial setup
 
 This is a conventional Ruby on Rails app, so you should be able to get up and
-running with the following commands:
+running with the following command:
 
 ```
-$ bundle install
-$ bin/rails db:setup
+$ bin/setup
 ```
 
 (Note that in addition to running migrations, we're also loading the app's
