@@ -7,6 +7,10 @@
     @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
   }
 
+  .td {
+    @apply px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900
+  }
+
   .table-container {
     @apply shadow overflow-hidden border-b border-gray-200 sm:rounded-lg overflow-x-auto
   }
