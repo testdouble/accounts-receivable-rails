@@ -66,31 +66,31 @@
             <tbody>
               <% @line_items[:product].each do |line_item| %>
                 <tr>
-                  <td class="td"><%= line_item.description %></td>
-                  <td class="td"><%= line_item.product.name %></td>
-                  <td class="td">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= line_item.description %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= line_item.product.name %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                     <span class="inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 px-4">
                       Product
                     </span>
                   </td>
-                  <td class="td"><%= to_money(line_item.price_override_cents || line_item.product.price_cents) %></td>
-                  <td class="td"><%= line_item.quantity %></td>
-                  <td class="td"><%= to_money((line_item.price_override_cents || line_item.product.price_cents) * line_item.quantity) %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= to_money(line_item.price_override_cents || line_item.product.price_cents) %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= line_item.quantity %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= to_money((line_item.price_override_cents || line_item.product.price_cents) * line_item.quantity) %></td>
                 </tr>
               <% end %>
 
               <% @line_items[:service].each do |line_item| %>
                 <tr>
-                  <td class="td"><%= line_item.description %></td>
-                  <td class="td"><%= line_item.service.name %></td>
-                  <td class="td">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= line_item.description %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= line_item.service.name %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                     <span class="inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800 px-4">
                       Service
                     </span>
                   </td>
-                  <td class="td"><%= to_money(line_item.price_override_cents || line_item.service.price_cents) %></td>
-                  <td class="td"><%= line_item.quantity %></td>
-                  <td class="td"><%= to_money((line_item.price_override_cents || line_item.service.price_cents) * line_item.quantity) %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= to_money(line_item.price_override_cents || line_item.service.price_cents) %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= line_item.quantity %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= to_money((line_item.price_override_cents || line_item.service.price_cents) * line_item.quantity) %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -110,6 +110,6 @@
 </div>
 
 <div class="py-4">
-  <%= link_to 'Edit', edit_invoice_path(@invoice), class: "btn" %> |
-  <%= link_to 'Back', invoices_path, class: "btn" %>
+  <%= link_to 'Edit', edit_invoice_path(@invoice), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %> |
+  <%= link_to 'Back', invoices_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
 </div>

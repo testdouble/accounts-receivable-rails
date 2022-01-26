@@ -10,8 +10,7 @@ our products and services.
 
 Before you get started, be sure to:
 
-* Be running Ruby 3.1.0
-* (We recommend using a Ruby version manager like asdf, rvm, etc. to help manage multple Ruby versions)
+* Be running Ruby 3.x
 * That you have a recent version of Bundler installed (e.g. `gem install
   bundler`)
 * That you have a recent version of git installed (e.g. `brew install git` on a

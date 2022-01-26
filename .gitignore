@@ -22,7 +22,3 @@
 
 .byebug_history
 
-/public/assets
-/public/dev-assets
-/app/assets/builds/*
-!/app/assets/builds/.keep
