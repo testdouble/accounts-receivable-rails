@@ -1,5 +1,5 @@
 module InvoicesHelper
   def to_money(cents)
-    number_to_currency(cents / 100)
+    "$#{cents.to_s.insert(-3, ".")}"
   end
 end
