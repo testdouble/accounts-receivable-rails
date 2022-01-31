@@ -19,15 +19,15 @@
     <tbody>
       <% @line_items.each_with_index do |line_item, index| %>
         <%= tag.tr class: index.odd? ? "bg-white" : "bg-gray-50" do %>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= line_item.invoice.id %></td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= line_item.product&.name %></td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= line_item.service&.name %></td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= line_item.price_override_cents %></td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= line_item.quantity %></td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= line_item.description %></td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= link_to 'Show', line_item %></td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= link_to 'Edit', edit_line_item_path(line_item) %></td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= link_to 'Destroy', line_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td class="<%= td_css %>"><%= line_item.invoice.id %></td>
+          <td class="<%= td_css %>"><%= line_item.product&.name %></td>
+          <td class="<%= td_css %>"><%= line_item.service&.name %></td>
+          <td class="<%= td_css %>"><%= line_item.price_override_cents %></td>
+          <td class="<%= td_css %>"><%= line_item.quantity %></td>
+          <td class="<%= td_css %>"><%= line_item.description %></td>
+          <td class="<%= td_css %>"><%= link_to 'Show', line_item %></td>
+          <td class="<%= td_css %>"><%= link_to 'Edit', edit_line_item_path(line_item) %></td>
+          <td class="<%= td_css %>"><%= link_to 'Destroy', line_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       <% end %>
     </tbody>
@@ -36,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Line Item', new_line_item_path, role: "button", class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+<%= link_to 'New Line Item', new_line_item_path, role: "button", class: "<%= btn_css %>" %>

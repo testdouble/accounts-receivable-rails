@@ -16,12 +16,12 @@
     <tbody>
       <% @invoices.each_with_index do |invoice, index| %>
         <%= tag.tr class: index.odd? ? "bg-white" : "bg-gray-50" do %>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= invoice.client.name %></td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= invoice.net_days %></td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= invoice.note %></td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= link_to 'Show', invoice %></td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td class="<%= td_css %>"><%= invoice.client.name %></td>
+          <td class="<%= td_css %>"><%= invoice.net_days %></td>
+          <td class="<%= td_css %>"><%= invoice.note %></td>
+          <td class="<%= td_css %>"><%= link_to 'Show', invoice %></td>
+          <td class="<%= td_css %>"><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+          <td class="<%= td_css %>"><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       <% end %>
     </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Invoice', new_invoice_path, role: "button", class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+<%= link_to 'New Invoice', new_invoice_path, role: "button", class: "<%= btn_css %>" %>
