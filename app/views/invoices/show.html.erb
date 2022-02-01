@@ -59,7 +59,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @line_items[:product].each do |line_item| %>
+              <% @line_items[:product]&.each do |line_item| %>
                 <tr>
                   <td class="<%= td_css %>">
                     <span class="inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 px-2">P</span>
@@ -72,7 +72,7 @@
                 </tr>
               <% end %>
 
-              <% @line_items[:service].each do |line_item| %>
+              <% @line_items[:service]&.each do |line_item| %>
                 <tr>
                   <td class="<%= td_css %>">
                     <span class="inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800 px-2">S</span>

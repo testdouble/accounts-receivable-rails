@@ -17,7 +17,7 @@ RSpec.describe "Invoices", type: :request do
   end
 
   describe "get /invoices/:id" do
-    let!(:service) { create :service }
+    let!(:service) { create :service, price_cents: 100 }
     let!(:line_item) { create :line_item, invoice: first_invoice, service: }
 
     subject { get invoice_path(first_invoice) }
