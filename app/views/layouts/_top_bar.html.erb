@@ -7,23 +7,23 @@
             <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg" alt="Workflow">
           </div>
           <div class="ml-3 space-x-3 sm:ml-6 flex sm:space-x-8">
-            <%= link_to clients_path, class: "#{active_nav(clients_path)} #{inactive_nav(clients_path)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
+            <%= link_to clients_path, class: "#{active_nav_css(:clients)} #{inactive_nav_css(:clients)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
               Clients
             <% end %>
 
-            <%= link_to products_path, class: "#{active_nav(products_path)} #{inactive_nav(products_path)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
+            <%= link_to products_path, class: "#{active_nav_css(:products)} #{inactive_nav_css(:products)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
               Products
             <% end %>
 
-            <%= link_to services_path, class: "#{active_nav(services_path)} #{inactive_nav(services_path)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
+            <%= link_to services_path, class: "#{active_nav_css(:services)} #{inactive_nav_css(:services)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
               Services
             <% end %>
 
-            <%= link_to invoices_path, class: "#{active_nav(invoices_path)} #{inactive_nav(invoices_path)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
+            <%= link_to invoices_path, class: "#{active_nav_css(:invoices)} #{inactive_nav_css(:invoices)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
               Invoices
             <% end %>
 
-            <%= link_to line_items_path, class: "#{active_nav(line_items_path)} #{inactive_nav(line_items_path)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
+            <%= link_to line_items_path, class: "#{active_nav_css(:line_items)} #{inactive_nav_css(:line_items)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
               Line Items
             <% end %>
           </div>
