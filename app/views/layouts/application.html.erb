@@ -6,24 +6,23 @@
 
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+
+    <!-- This is needed because the tailwind CSS/JS assets from Rails pipeline are not setup/do not work correctly -->
+    <!-- RequiresJS layouts are broken with pipeline assets -->
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
   <body class="h-full">
-		<!-- TailwindUI sidebar layout -->
-		<!-- https://tailwindui.com/components/application-ui/application-shells/sidebar -->
+    <div class="min-h-full">
+      <%= render "layouts/top_bar" %>
 
-		<div>
-			<%= render "layouts/sidebar" %>
-
-			<div class="md:pl-64 flex flex-col">
-				<%= render "layouts/top_bar" %>
-
-				<main class="flex-1">
-					<div class="p-6">
-						<%= yield %>
-					</div>
-				</main>
-			</div>
-		</div>
+      <div class="py-10">
+        <main>
+          <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <%= yield %>
+          </div>
+        </main>
+      </div>
+    </div>
   </body>
 </html>

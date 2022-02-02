@@ -1,11 +1,33 @@
-<div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
-  <button type="button" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
-    <span class="sr-only">Open sidebar</span>
-    <!-- Heroicon name: outline/menu-alt-2 -->
-    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-    </svg>
-  </button>
-  <div class="flex-1 px-4 flex justify-between">
-  </div>
-</div>
+<nav class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex">
+          <div class="flex-shrink-0 flex items-center">
+            <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
+            <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg" alt="Workflow">
+          </div>
+          <div class="ml-3 space-x-3 sm:ml-6 flex sm:space-x-8">
+            <%= link_to clients_path, class: "#{active_nav(clients_path)} #{inactive_nav(clients_path)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
+              Clients
+            <% end %>
+
+            <%= link_to products_path, class: "#{active_nav(products_path)} #{inactive_nav(products_path)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
+              Products
+            <% end %>
+
+            <%= link_to services_path, class: "#{active_nav(services_path)} #{inactive_nav(services_path)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
+              Services
+            <% end %>
+
+            <%= link_to invoices_path, class: "#{active_nav(invoices_path)} #{inactive_nav(invoices_path)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
+              Invoices
+            <% end %>
+
+            <%= link_to line_items_path, class: "#{active_nav(line_items_path)} #{inactive_nav(line_items_path)} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" do %>
+              Line Items
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
