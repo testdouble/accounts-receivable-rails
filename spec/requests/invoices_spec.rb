@@ -1,33 +1,36 @@
 require "rails_helper"
 
 RSpec.describe "Invoices", type: :request do
-  let!(:first_invoice) { create :invoice }
-  let!(:second_invoice) { create :invoice }
+  let(:client_name) { "GotHub" }
+  let(:service_name) { "Consulting Services" }
+  let(:service) { create(:service, name: service_name) }
+  let(:client) { create(:client, name: client_name) }
+  let(:invoice) { create(:invoice, client: client, line_items: [build(:line_item, service: service)]) }
 
   describe "get /invoices" do
     subject { get invoices_path }
 
     it "renders index" do
+      first_invoice =  create(:invoice, client: client, line_items: [build(:line_item, service: service)])
+      second_invoice = create(:invoice, client: client, line_items: [build(:line_item, service: service)])
+
       subject
 
       expect(response).to render_template(:index)
-      expect(response.body).to include(first_invoice.client.name)
-      expect(response.body).to include(second_invoice.client.name)
+      expect(response.body).to include(client_name)
+      expect(response.body).to include(client_name)
     end
   end
 
   describe "get /invoices/:id" do
-    let!(:service) { create :service, price_cents: 100 }
-    let!(:line_item) { create :line_item, invoice: first_invoice, service: }
-
-    subject { get invoice_path(first_invoice) }
+    subject { get invoice_path(invoice) }
 
     it "renders show" do
       subject
 
       expect(response).to render_template(:show)
-      expect(response.body).to include(first_invoice.client.name)
-      expect(response.body).to include(first_invoice.line_items.first.service.name)
+      expect(response.body).to include(client_name)
+      expect(response.body).to include(service_name)
     end
   end
 
@@ -41,9 +44,9 @@ RSpec.describe "Invoices", type: :request do
   end
 
   describe "post /invoices" do
-    let!(:client) { create :client }
+    let(:invoice_name) { "Brand New Invoice" }
 
-    subject { post invoices_path, params: {invoice: {client_id: client.id}} }
+    subject { post invoices_path, params: {invoice: {name: invoice_name, client_id: client.id}} }
 
     it "creates a new invoice" do
       subject
@@ -51,13 +54,14 @@ RSpec.describe "Invoices", type: :request do
       expect(response).to redirect_to(assigns(:invoice))
       follow_redirect!
       expect(response.body).to include("Invoice was successfully created.")
+      expect(Invoice.count).to be(1)
     end
   end
 
   describe "put /invoices/:id" do
-    let!(:client) { create :client }
+    let!(:new_client) { create :client }
 
-    subject { put invoice_path(first_invoice), params: {invoice: {client_id: client.id}} }
+    subject { put invoice_path(invoice), params: {invoice: {client_id: new_client.id}} }
 
     it "updates the invoice" do
       subject
@@ -65,11 +69,12 @@ RSpec.describe "Invoices", type: :request do
       expect(response).to redirect_to(assigns(:invoice))
       follow_redirect!
       expect(response.body).to include("Invoice was successfully updated.")
+      expect(invoice.reload.client_id).to be(new_client.id)
     end
   end
 
   describe "delete /invoices/:id" do
-    subject { delete invoice_path(first_invoice) }
+    subject { delete invoice_path(invoice) }
 
     it "destroys the invoice" do
       subject
