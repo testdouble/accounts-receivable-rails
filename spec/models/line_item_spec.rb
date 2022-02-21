@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe LineItem, type: :model do
   let(:client) { create :client }
   let(:line_item_kwargs) { {} }
-  let(:invoice) { create :invoice, client: }
-  let(:line_item) { build :line_item, invoice:, **line_item_kwargs }
+  let(:invoice) { create :invoice, client: client }
+  let(:line_item) { build :line_item, invoice: invoice, **line_item_kwargs }
 
   describe "must_be_product_or_service" do
     subject { line_item }

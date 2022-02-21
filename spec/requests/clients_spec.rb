@@ -1,13 +1,13 @@
 require "rails_helper"
 
 RSpec.describe "Clients", type: :request do
-  let!(:first_client) { create :client }
-  let!(:second_client) { create :client }
-
   describe "get /clients" do
     subject { get clients_path }
 
     it "renders index" do
+      first_client = create :client
+      second_client = create :client
+
       subject
 
       expect(response).to render_template(:index)
@@ -41,8 +41,9 @@ RSpec.describe "Clients", type: :request do
 
   describe "put /clients/:id" do
     let(:new_client) { build :client }
+    let(:client) { create :client }
 
-    subject { put client_path(first_client), params: {client: {name: new_client.name, email: new_client.email}} }
+    subject { put client_path(client), params: {client: {name: new_client.name, email: new_client.email}} }
 
     it "updates the client" do
       subject
@@ -54,10 +55,10 @@ RSpec.describe "Clients", type: :request do
   end
 
   describe "delete /clients/:id" do
-    subject { delete client_path(first_client) }
-
     it "destroys the client" do
-      subject
+      client = create :client
+
+      delete client_path(client)
 
       expect(response).to redirect_to(clients_path)
       follow_redirect!
