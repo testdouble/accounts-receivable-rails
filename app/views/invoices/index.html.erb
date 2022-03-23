@@ -19,9 +19,9 @@
           <td class="<%= td_css %>"><%= invoice.client.name %></td>
           <td class="<%= td_css %>"><%= invoice.net_days %></td>
           <td class="<%= td_css %>"><%= invoice.note %></td>
-          <td class="<%= td_css %>"><%= link_to 'Show', invoice %></td>
-          <td class="<%= td_css %>"><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-          <td class="<%= td_css %>"><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td class="<%= td_css %> underline"><%= link_to 'Show', invoice %></td>
+          <td class="<%= td_css %> underline"><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+          <td class="<%= td_css %> underline"><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       <% end %>
     </tbody>

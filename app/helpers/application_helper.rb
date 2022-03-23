@@ -1,6 +1,6 @@
 module ApplicationHelper
   def td_css
-    "px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+    "whitespace-nowrap px-3 py-4 text-sm text-gray-500"
   end
 
   def btn_css
