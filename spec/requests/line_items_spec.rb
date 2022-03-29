@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Line Items", type: :request do
   let!(:service) { create :service }
-  let!(:line_item) { create :line_item, invoice:, service: }
+  let!(:line_item) { create :line_item, invoice: invoice, service: service}
   let!(:invoice) { create :invoice }
 
   describe "get /line_items" do
