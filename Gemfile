@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem "rails", "~> 7.2.4"
-gem "sqlite3", '~> 1.3', '>= 1.3.6'
+gem "sqlite3", "~> 1.3", ">= 1.3.6"
 gem "puma", "~> 6.6"
 gem "uglifier", ">= 1.3.0"
 gem "jsbundling-rails", "~> 1.0"

@@ -11,8 +11,8 @@ RSpec.describe "Invoices", type: :request do
     subject { get invoices_path }
 
     it "renders index" do
-      first_invoice =  create(:invoice, client: client, line_items: [build(:line_item, service: service)])
-      second_invoice = create(:invoice, client: client, line_items: [build(:line_item, service: service)])
+      create(:invoice, client: client, line_items: [build(:line_item, service: service)])
+      create(:invoice, client: client, line_items: [build(:line_item, service: service)])
 
       subject
 
