@@ -1,8 +1,13 @@
 (() => {
   var __defProp = Object.defineProperty;
   var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __esm = (fn, res) => function __init() {
-    return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
+  var __esm = (fn, res, err) => function __init() {
+    if (err) throw err[0];
+    try {
+      return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
+    } catch (e) {
+      throw err = [e], e;
+    }
   };
   var __export = (target, all) => {
     for (var name in all)
@@ -41,7 +46,7 @@
   var init_connection_monitor = __esm({
     "node_modules/@rails/actioncable/src/connection_monitor.js"() {
       init_logger();
-      now = () => new Date().getTime();
+      now = () => (/* @__PURE__ */ new Date()).getTime();
       secondsSince = (time) => (now() - time) / 1e3;
       clamp = (number, min, max) => Math.max(min, Math.min(max, number));
       ConnectionMonitor = class {
@@ -83,6 +88,7 @@
           this.disconnectedAt = now();
           logger_default.log("ConnectionMonitor recorded disconnect");
         }
+        // Private
         startPolling() {
           this.stopPolling();
           this.poll();
@@ -91,10 +97,13 @@
           clearTimeout(this.pollTimeout);
         }
         poll() {
-          this.pollTimeout = setTimeout(() => {
-            this.reconnectIfStale();
-            this.poll();
-          }, this.getPollInterval());
+          this.pollTimeout = setTimeout(
+            () => {
+              this.reconnectIfStale();
+              this.poll();
+            },
+            this.getPollInterval()
+          );
         }
         getPollInterval() {
           const { min, max, multiplier } = this.constructor.pollInterval;
@@ -121,12 +130,15 @@
         }
         visibilityDidChange() {
           if (document.visibilityState === "visible") {
-            setTimeout(() => {
-              if (this.connectionIsStale() || !this.connection.isOpen()) {
-                logger_default.log(`ConnectionMonitor reopening stale connection on visibilitychange. visibilityState = ${document.visibilityState}`);
-                this.connection.reopen();
-              }
-            }, 200);
+            setTimeout(
+              () => {
+                if (this.connectionIsStale() || !this.connection.isOpen()) {
+                  logger_default.log(`ConnectionMonitor reopening stale connection on visibilitychange. visibilityState = ${document.visibilityState}`);
+                  this.connection.reopen();
+                }
+              },
+              200
+            );
           }
         }
       };
@@ -242,6 +254,7 @@
         isActive() {
           return this.isState("open", "connecting");
         }
+        // Private
         isProtocolSupported() {
           return indexOf.call(supportedProtocols, this.getProtocol()) >= 0;
         }
@@ -339,6 +352,7 @@
           this.identifier = JSON.stringify(params);
           extend(this, mixin);
         }
+        // Perform a channel action with the optional data passed as an attribute
         perform(action, data = {}) {
           data.action = action;
           return this.send(data);
@@ -369,6 +383,7 @@
           const subscription = new Subscription(this.consumer, params, mixin);
           return this.add(subscription);
         }
+        // Private
         add(subscription) {
           this.subscriptions.push(subscription);
           this.consumer.ensureActiveConnection();
@@ -521,8 +536,7 @@
     Object.setPrototypeOf(HTMLElement, BuiltInHTMLElement);
   })();
   (function(prototype) {
-    if (typeof prototype.requestSubmit == "function")
-      return;
+    if (typeof prototype.requestSubmit == "function") return;
     prototype.requestSubmit = function(submitter) {
       if (submitter) {
         validateSubmitter(submitter, this);
@@ -582,11 +596,11 @@
     FrameLoadingStyle2["eager"] = "eager";
     FrameLoadingStyle2["lazy"] = "lazy";
   })(FrameLoadingStyle || (FrameLoadingStyle = {}));
-  var FrameElement = class extends HTMLElement {
+  var FrameElement = class _FrameElement extends HTMLElement {
     constructor() {
       super();
       this.loaded = Promise.resolve();
-      this.delegate = new FrameElement.delegateConstructor(this);
+      this.delegate = new _FrameElement.delegateConstructor(this);
     }
     static get observedAttributes() {
       return ["disabled", "loading", "src"];
@@ -1032,7 +1046,7 @@
         return FormEnctype.urlEncoded;
     }
   }
-  var FormSubmission = class {
+  var FormSubmission = class _FormSubmission {
     constructor(delegate, formElement, submitter, mustRedirect = false) {
       this.state = FormSubmissionState.initialized;
       this.delegate = delegate;
@@ -1087,7 +1101,7 @@
     async start() {
       const { initialized, requesting } = FormSubmissionState;
       if (this.needsConfirmation) {
-        const answer = FormSubmission.confirmMethod(this.confirmationMessage, this.formElement);
+        const answer = _FormSubmission.confirmMethod(this.confirmationMessage, this.formElement);
         if (!answer) {
           return;
         }
@@ -1230,7 +1244,7 @@
   };
   var FormInterceptor = class {
     constructor(delegate, element) {
-      this.submitBubbled = (event) => {
+      this.submitBubbled = ((event) => {
         const form = event.target;
         if (!event.defaultPrevented && form instanceof HTMLFormElement && form.closest("turbo-frame, html") == this.element) {
           const submitter = event.submitter || void 0;
@@ -1241,7 +1255,7 @@
             this.delegate.formSubmissionIntercepted(form, submitter);
           }
         }
-      };
+      });
       this.delegate = delegate;
       this.element = element;
     }
@@ -1357,7 +1371,7 @@
           delete this.clickEvent;
         }
       };
-      this.linkClicked = (event) => {
+      this.linkClicked = ((event) => {
         if (this.clickEvent && this.respondsToEventTarget(event.target) && event.target instanceof Element) {
           if (this.delegate.shouldInterceptLinkClick(event.target, event.detail.url)) {
             this.clickEvent.preventDefault();
@@ -1366,7 +1380,7 @@
           }
         }
         delete this.clickEvent;
-      };
+      });
       this.willVisit = () => {
         delete this.clickEvent;
       };
@@ -1559,7 +1573,7 @@
       return defaultValue;
     }
   }
-  var ProgressBar = class {
+  var ProgressBar = class _ProgressBar {
     constructor() {
       this.hiding = false;
       this.value = 0;
@@ -1583,8 +1597,8 @@
         background: #0076ff;
         z-index: 9999;
         transition:
-          width ${ProgressBar.animationDuration}ms ease-out,
-          opacity ${ProgressBar.animationDuration / 2}ms ${ProgressBar.animationDuration / 2}ms ease-in;
+          width ${_ProgressBar.animationDuration}ms ease-out,
+          opacity ${_ProgressBar.animationDuration / 2}ms ${_ProgressBar.animationDuration / 2}ms ease-in;
         transform: translate3d(0, 0, 0);
       }
     `;
@@ -1622,7 +1636,7 @@
     }
     fadeProgressElement(callback) {
       this.progressElement.style.opacity = "0";
-      setTimeout(callback, ProgressBar.animationDuration * 1.5);
+      setTimeout(callback, _ProgressBar.animationDuration * 1.5);
     }
     uninstallProgressElement() {
       if (this.progressElement.parentNode) {
@@ -1631,7 +1645,7 @@
     }
     startTrickling() {
       if (!this.trickleInterval) {
-        this.trickleInterval = window.setInterval(this.trickle, ProgressBar.animationDuration);
+        this.trickleInterval = window.setInterval(this.trickle, _ProgressBar.animationDuration);
       }
     }
     stopTrickling() {
@@ -1646,7 +1660,7 @@
     createStylesheetElement() {
       const element = document.createElement("style");
       element.type = "text/css";
-      element.textContent = ProgressBar.defaultCSS;
+      element.textContent = _ProgressBar.defaultCSS;
       return element;
     }
     createProgressElement() {
@@ -1736,7 +1750,7 @@
     }
     return element;
   }
-  var PageSnapshot = class extends Snapshot {
+  var PageSnapshot = class _PageSnapshot extends Snapshot {
     constructor(element, headSnapshot) {
       super(element);
       this.headSnapshot = headSnapshot;
@@ -1751,7 +1765,7 @@
       return new this(body, new HeadSnapshot(head));
     }
     clone() {
-      return new PageSnapshot(this.element.cloneNode(true), this.headSnapshot);
+      return new _PageSnapshot(this.element.cloneNode(true), this.headSnapshot);
     }
     get headElement() {
       return this.headSnapshot.element;
@@ -2049,7 +2063,7 @@
       }
     }
     recordTimingMetric(metric) {
-      this.timingMetrics[metric] = new Date().getTime();
+      this.timingMetrics[metric] = (/* @__PURE__ */ new Date()).getTime();
     }
     getTimingMetrics() {
       return Object.assign({}, this.timingMetrics);
@@ -2218,7 +2232,7 @@
         removeEventListener("submit", this.submitBubbled, false);
         addEventListener("submit", this.submitBubbled, false);
       };
-      this.submitBubbled = (event) => {
+      this.submitBubbled = ((event) => {
         if (!event.defaultPrevented) {
           const form = event.target instanceof HTMLFormElement ? event.target : void 0;
           const submitter = event.submitter || void 0;
@@ -2230,7 +2244,7 @@
             }
           }
         }
-      };
+      });
       this.delegate = delegate;
     }
     start() {
@@ -2623,13 +2637,13 @@
     constructor(delegate) {
       this.sources = /* @__PURE__ */ new Set();
       this.started = false;
-      this.inspectFetchResponse = (event) => {
+      this.inspectFetchResponse = ((event) => {
         const response = fetchResponseFromEvent(event);
         if (response && fetchResponseIsStream(response)) {
           event.preventDefault();
           this.receiveMessageResponse(response);
         }
-      };
+      });
       this.receiveMessageEvent = (event) => {
         if (this.started && typeof event.data == "string") {
           this.receiveMessageHTML(event.data);
@@ -3718,8 +3732,7 @@
     }
     disconnectedCallback() {
       disconnectStreamSource(this);
-      if (this.subscription)
-        this.subscription.unsubscribe();
+      if (this.subscription) this.subscription.unsubscribe();
     }
     dispatchMessageEvent(data) {
       const event = new MessageEvent("message", { data });
