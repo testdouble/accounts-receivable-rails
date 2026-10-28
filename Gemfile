@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "~> 7.1.3.2"
+gem "rails", "~> 7.2.4"
 gem "sqlite3", '~> 1.3', '>= 1.3.6'
 gem "puma"
 gem "uglifier", ">= 1.3.0"
@@ -18,7 +18,7 @@ group :development, :test do
   # gem "selenium-webdriver"
   gem "standardrb", "~> 1.0"
 
-  gem "rspec-rails", "~> 5.0.2"
+  gem "rspec-rails", "~> 7.1.1"
   gem "factory_bot_rails", "~> 6.2.0"
   gem "faker", "~> 2.19.0"
 end
