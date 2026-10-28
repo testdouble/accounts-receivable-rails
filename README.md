@@ -10,7 +10,8 @@ our products and services.
 
 Before you get started, be sure to:
 
-* Be running Ruby 3.x
+* Be running Ruby 3.3.11 (see `.ruby-version`)
+* Be running Node 24 and Yarn 1.x (see `.tool-versions`)
 * That you have a recent version of Bundler installed (e.g. `gem install
   bundler`)
 * That you have a recent version of git installed (e.g. `brew install git` on a
